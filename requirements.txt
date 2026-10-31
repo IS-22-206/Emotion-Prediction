@@ -1,5 +1,5 @@
 fastapi==0.115.6
 uvicorn[standard]==0.34.0
 pydantic>=2.7,<3
-tensorflow-cpu==2.21.1
-numpy==2.5.1
+tensorflow-cpu==2.15.1
+numpy==1.26.4
