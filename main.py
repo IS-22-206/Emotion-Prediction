@@ -1,6 +1,6 @@
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.text import Tokenizer
-from fastapi import FastAPI,HTTPException
+from fastapi import FastAPI,HTTPException, Path
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -24,11 +24,11 @@ import re
     """
     
     
-#A.  Model Path
-model_path=r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\BiGRU.keras"
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR / "Artifacts" / "BiGRU.keras"
+TOKENIZER_PATH = BASE_DIR / "Artifacts" / "tokenizer.pkl"
+STATIC_DIR = BASE_DIR / "static"
 
-# tokenizer
-tokenizer_path=r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\tokenizer.pkl"
 # max_sequence
 max_sequence_length=50
 # emotion_labels
