@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moodlens – see the emotion in your words</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Sora:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Sentiment Analysis</h1>
-    <p>Welcome to the Sentiment Analysis App!</p>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="fx" aria-hidden="true"></div>
+
+<main>
+  <header>
+    <span class="logo">moodlens</span>
+    <span class="status" id="status"><i></i><b>waking up the model…</b></span>
+  </header>
+
+  <section class="panel">
+    <h1>Write something.<br>Watch it feel.</h1>
+    <p class="sub">A BiGRU network reads your sentence and the orb acts out the emotion it finds.</p>
+
+    <div class="composer">
+      <textarea id="text" rows="3" maxlength="2000" aria-label="Your sentence"
+        placeholder="I can't believe I finally got the job…"></textarea>
+      <div class="row">
+        <span class="count" id="count">0 / 2000</span>
+        <button id="go" type="button"><span class="lbl">Read the emotion</span><span class="spin"></span></button>
+      </div>
+    </div>
+
+    <div class="chips" id="chips" aria-label="Try an example"></div>
+    <p class="err" id="err" role="alert" hidden></p>
+
+    <div class="result" id="result" hidden>
+      <div class="hero">
+        <div class="emoji" id="emoji"></div>
+        <div>
+          <div class="label" id="label"></div>
+          <div class="conf" id="conf"></div>
+        </div>
+      </div>
+      <ul class="bars" id="bars"></ul>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="/static/script.js"></script>
 </body>
 </html>

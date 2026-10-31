@@ -32,12 +32,12 @@ tokenizer_path=r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\tokenizer.p
 # max_sequence
 max_sequence_length=50
 # emotion_labels
-emotion_labels=['joy', 'sadness', 'anger', 'fear', 'love', 'surprise']
+emotion_labels=['sadness', 'joy', 'love', 'anger', 'fear', 'surprise']
 
 # Emotion  EMojis 
 # 😁😢😊😡😘😶😲😱
 Emotion_emojis={
-    'joy':"😊", 'sadness':"😢", 'anger':"😡", 'fear':"😱", 'love':"😘", 'surprise':"😲"
+    'sadness':"😢", 'joy':"😊", 'love':"😘", 'anger':"😡", 'fear':"😱", 'surprise':"😲"
 }
 
 """2.Preprocess the upcoming text
@@ -177,7 +177,13 @@ def predict_emotion(text_input:TextInput):
     all_probabilities={
           label: float(prob) for prob, label in zip(probabilities, emotion_labels)
       }
-      
+    # print("Input:", text_input.text)
+    # print("Cleaned:", cleaned_text)
+    # print("Tokenized:", tokenized_text)
+    # print("Probabilities:", probabilities)
+    # print("Predicted index:", np.argmax(probabilities)) 
+    # print(emotion_labels)
+    # print(BiGRU_model.output_shape)
     return PredictionResponse(text=text_input.text,
                                 predicted_emotion=emotion_labels[top_emotion_index],
                                 confidence=float(probabilities[top_emotion_index]),
