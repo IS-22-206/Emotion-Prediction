@@ -24,10 +24,10 @@ import re
     """
     
     
-BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "Artifacts" / "BiGRU.keras"
-TOKENIZER_PATH = BASE_DIR / "Artifacts" / "tokenizer.pkl"
-STATIC_DIR = BASE_DIR / "static"
+
+MODEL_PATH = r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\BiGRU.keras"
+TOKENIZER_PATH = r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\tokenizer.pkl"
+STATIC_DIR = r"C:\Users\princ\OneDrive\Desktop\sentiment\static"
 
 # max_sequence
 max_sequence_length=50
@@ -101,8 +101,8 @@ dl_model={}  #{1.BiGRU ,2.TOkenizer} ->True,{} ->False
 @asynccontextmanager
 async def lifespan(app:FastAPI):
     print("Loading the model and tokenizer...")
-    dl_model["BiGRU"]=load_model(model_path)
-    with open(tokenizer_path,'rb') as file:
+    dl_model["BiGRU"]=load_model(MODEL_PATH)
+    with open(TOKENIZER_PATH,'rb') as file:
         dl_model["tokenizer"]=pickle.load(file)
     print('Model are loaded successfully')
     
@@ -127,7 +127,7 @@ app.add_middleware(
     allow_headers=["*"]
     )
     
-app.mount('/static',StaticFiles(directory="static"),name="static")
+app.mount('/static',StaticFiles(directory=STATIC_DIR),name="static")
 
 
 
@@ -141,7 +141,7 @@ C.Predict Emotion ENdpoint('/predict')
 # A.Server UI at homepage('/')
 @app.get('/',include_in_schema=False)
 def server_ui():
-    return FileResponse('static/index.html')
+    return FileResponse(f'{STATIC_DIR}/index.html')
 
 
 # B.Helath check ENdpoint('/health')
