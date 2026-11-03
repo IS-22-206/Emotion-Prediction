@@ -26,10 +26,10 @@ from pathlib import Path
     
     
 
-MODEL_PATH = r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\BiGRU.keras"
-TOKENIZER_PATH = r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\tokenizer.pkl"
-# STATIC_DIR = r"C:\Users\princ\OneDrive\Desktop\sentiment\static"
 BASE_DIR = Path(__file__).resolve().parent
+ARTIFACTS_DIR = BASE_DIR / "Artifacts"
+MODEL_PATH = ARTIFACTS_DIR / "BiGRU.keras"
+TOKENIZER_PATH = ARTIFACTS_DIR / "tokenizer.pkl"
 STATIC_DIR = BASE_DIR / "static"
 
 # max_sequence
