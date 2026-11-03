@@ -11,6 +11,7 @@ import numpy as np
 import string 
 import pickle
 import re
+from pathlib import Path
 
 
 
@@ -27,7 +28,9 @@ import re
 
 MODEL_PATH = r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\BiGRU.keras"
 TOKENIZER_PATH = r"C:\Users\princ\OneDrive\Desktop\sentiment\Artifacts\tokenizer.pkl"
-STATIC_DIR = r"C:\Users\princ\OneDrive\Desktop\sentiment\static"
+# STATIC_DIR = r"C:\Users\princ\OneDrive\Desktop\sentiment\static"
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
 
 # max_sequence
 max_sequence_length=50
